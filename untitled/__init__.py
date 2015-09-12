@@ -1,1 +1,2 @@
-from .commands import BaseCommand
+from .commands import NewCommand
+from .agent import Agent
