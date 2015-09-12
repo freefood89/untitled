@@ -5,5 +5,7 @@ agent = Agent()
 def foo():
 	print('foooooooo')
 
-agent.call_command(NewCommand(foo))
+agent.run_command(NewCommand(foo))
+
 agent.register_command('foo', NewCommand(foo))
+agent.call_by_keyword('foo')
