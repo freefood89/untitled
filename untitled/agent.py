@@ -23,14 +23,17 @@ class Agent():
 
 	def call_by_keyword(self, keyword):
 		if keyword not in self.commands:
-			raise CommandError()
+			raise CommandError(keyword)
 		self.commands[keyword].execute()
 
 	def run(self):
 		# TODO make IO loop nicer
 		while True:
 			keyword = input('>')
-			self.commands[keyword].execute()
+			try:
+				self.call_by_keyword(keyword)
+			except CommandError as e:
+				print(e)
 
 
 
