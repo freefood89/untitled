@@ -19,7 +19,7 @@ class Agent():
 		return decorator
 
 	def run_command(self, cmd, args=None):
-		if args:
+		if args and len(args) > 1:
 			cmd.execute(args)
 		else:
 			cmd.execute()

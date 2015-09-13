@@ -33,6 +33,9 @@ def echo(args):
 	if len(args) > 1:
 		print(' '.join(args[1:]))
 
+@agent.register('knock-knock')
+def respond():
+	print("who's there?")
 
 # @agent.register('echo')
 # def echo():
