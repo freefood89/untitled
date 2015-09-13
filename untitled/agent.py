@@ -18,20 +18,25 @@ class Agent():
 			return fn
 		return decorator
 
-	def run_command(self, cmd):
-		cmd.execute()
+	def run_command(self, cmd, args=None):
+		if args:
+			cmd.execute(args)
+		else:
+			cmd.execute()
 
-	def call_by_keyword(self, keyword):
+	def call_by_keyword(self, keyword, args=None):
 		if keyword not in self.commands:
 			raise CommandError(keyword)
-		self.commands[keyword].execute()
+		command = self.commands[keyword]
+		self.run_command(command,args)
 
 	def run(self):
 		# TODO make IO loop nicer
 		while True:
-			keyword = input('>')
+			command = input('>').split(' ')
+			keyword = command[0]
 			try:
-				self.call_by_keyword(keyword)
+				self.call_by_keyword(keyword, command)
 			except CommandError as e:
 				print(e)
 

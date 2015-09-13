@@ -3,6 +3,7 @@ class BaseCommand():
 	def execute(self): pass
 
 class NewCommand(BaseCommand):
-	def __init__(self, fn):
+	def __init__(self, fn, args=None):
 		self.execute = fn
+		self.args = args
 		
